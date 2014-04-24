@@ -24,7 +24,7 @@ ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$FG[190]%}✭%{$reset_color%}"
 
 
 
-PROMPT='${ret_status} %n@%m   %d   $(git_branch)%{$reset_color%} ⌚ %D{%H:%M}%{$reset_color%}
+PROMPT='${ret_status} %n@%m   %d   $(git_prompt_info)%{$reset_color%} ⌚ %D{%H:%M}%{$reset_color%}
 %% '
 
 
