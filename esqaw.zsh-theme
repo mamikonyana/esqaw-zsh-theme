@@ -29,7 +29,15 @@ PROMPT='${ret_status} %n@%m   %d   $(git_prompt_info)%{$reset_color%} ⌚ %D{%H:
 
 
 LASTCMD_START=0
-function microtime()    { date +'%s.%N' }
+function microtime()
+{
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+    date +'%s' 
+  else
+    date +'%s.%N' 
+  fi 
+}
+
 
 #called before user command
 function preexec(){
