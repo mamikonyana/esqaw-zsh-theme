@@ -23,8 +23,22 @@ ZSH_THEME_GIT_PROMPT_UNMERGED="%{$FG[082]%}═%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$FG[190]%}✭%{$reset_color%}"
 
 
+function get_random_color {
+  python -c "
+import random
+import socket
 
-PROMPT='${ret_status} %n@%m   %d   $(git_prompt_info)%{$reset_color%} ⌚ %D{%H:%M}%{$reset_color%}
+random.seed(socket.gethostname())
+for _ in range($1):
+  random.randint(0, 255)
+print '{:3d}'.format(random.randint(0, 255))
+"
+}
+
+local host_status="%{$FG[$(get_random_color 1)]%}%n@%m%{$reset_color%}"
+local directory="%{$FG[$(get_random_color 3)]%}%d%{$reset_color%}"
+
+PROMPT='${ret_status} ${host_status} ${directory}  $(git_prompt_info)%{$reset_color%} ⌚ %D{%H:%M}%{$reset_color%}
 %% '
 
 
