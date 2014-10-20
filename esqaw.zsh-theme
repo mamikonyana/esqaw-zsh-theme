@@ -35,10 +35,16 @@ print '{:3d}'.format(random.randint(0, 255))
 "
 }
 
+function enabled_git_info {
+  if ( ! $ZSH_THEME_DISABLE_GIT_STATUS ) ; then
+    echo "$(git_prompt_info)%{$reset_color%}"
+  fi
+}
+
 local host_status="%{$FG[$(get_random_color 1)]%}%n@%m%{$reset_color%}"
 local directory="%{$FG[$(get_random_color 3)]%}%d%{$reset_color%}"
 
-PROMPT='${ret_status} ${host_status} ${directory}  $(git_prompt_info)%{$reset_color%} ⌚ %D{%H:%M}%{$reset_color%}
+PROMPT='${ret_status} ${host_status} ${directory}  $(enabled_git_info) ⌚ %D{%H:%M}%{$reset_color%}
 %% '
 
 
