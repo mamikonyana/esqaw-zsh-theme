@@ -31,7 +31,7 @@ import socket
 random.seed(socket.gethostname())
 for _ in range($1):
   random.randint(0, 255)
-print '{:3d}'.format(random.randint(0, 255))
+print('{:3d}'.format(random.randint(0, 255)))
 "
 }
 
