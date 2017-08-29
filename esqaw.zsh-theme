@@ -24,14 +24,14 @@ ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$FG[190]%}✭%{$reset_color%}"
 
 
 function get_random_color {
-  python -c "
+  python3 -c "
 import random
 import socket
 
 random.seed(socket.gethostname())
 for _ in range($1):
   random.randint(0, 255)
-print('{:3d}'.format(random.randint(0, 255)))
+print('{:03d}'.format(random.randint(0, 255)))
 "
 }
 
